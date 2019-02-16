@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetRemoteClientData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="optionalstr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemoteClientDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRemoteClientDataResult" type="tns:ArrayOfRemoteClientData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRemoteClientData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemoteClientData" type="tns:RemoteClientData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoteClientData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="dayOfWeek" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isUrlProvided" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="mydateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetClientData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetClientDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetClientDataWithGetMethod">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetClientDataWithGetMethodResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ArrayOfRemoteClientData" nillable="true" type="tns:ArrayOfRemoteClientData" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetRemoteClientDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRemoteClientData" />
+  </wsdl:message>
+  <wsdl:message name="GetRemoteClientDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRemoteClientDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientData" />
+  </wsdl:message>
+  <wsdl:message name="GetClientDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientDataWithGetMethodSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientDataWithGetMethod" />
+  </wsdl:message>
+  <wsdl:message name="GetClientDataWithGetMethodSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientDataWithGetMethodResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRemoteClientDataHttpGetIn">
+    <wsdl:part name="optionalstr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRemoteClientDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfRemoteClientData" />
+  </wsdl:message>
+  <wsdl:message name="GetClientDataHttpGetIn" />
+  <wsdl:message name="GetClientDataHttpGetOut" />
+  <wsdl:message name="GetClientDataWithGetMethodHttpGetIn" />
+  <wsdl:message name="GetClientDataWithGetMethodHttpGetOut" />
+  <wsdl:message name="GetRemoteClientDataHttpPostIn">
+    <wsdl:part name="optionalstr" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRemoteClientDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfRemoteClientData" />
+  </wsdl:message>
+  <wsdl:message name="GetClientDataHttpPostIn" />
+  <wsdl:message name="GetClientDataHttpPostOut" />
+  <wsdl:message name="GetClientDataWithGetMethodHttpPostIn" />
+  <wsdl:message name="GetClientDataWithGetMethodHttpPostOut" />
+  <wsdl:portType name="WebService2Soap">
+    <wsdl:operation name="GetRemoteClientData">
+      <wsdl:input message="tns:GetRemoteClientDataSoapIn" />
+      <wsdl:output message="tns:GetRemoteClientDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientData">
+      <wsdl:input message="tns:GetClientDataSoapIn" />
+      <wsdl:output message="tns:GetClientDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDataWithGetMethod">
+      <wsdl:input message="tns:GetClientDataWithGetMethodSoapIn" />
+      <wsdl:output message="tns:GetClientDataWithGetMethodSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService2HttpGet">
+    <wsdl:operation name="GetRemoteClientData">
+      <wsdl:input message="tns:GetRemoteClientDataHttpGetIn" />
+      <wsdl:output message="tns:GetRemoteClientDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientData">
+      <wsdl:input message="tns:GetClientDataHttpGetIn" />
+      <wsdl:output message="tns:GetClientDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDataWithGetMethod">
+      <wsdl:input message="tns:GetClientDataWithGetMethodHttpGetIn" />
+      <wsdl:output message="tns:GetClientDataWithGetMethodHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService2HttpPost">
+    <wsdl:operation name="GetRemoteClientData">
+      <wsdl:input message="tns:GetRemoteClientDataHttpPostIn" />
+      <wsdl:output message="tns:GetRemoteClientDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientData">
+      <wsdl:input message="tns:GetClientDataHttpPostIn" />
+      <wsdl:output message="tns:GetClientDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDataWithGetMethod">
+      <wsdl:input message="tns:GetClientDataWithGetMethodHttpPostIn" />
+      <wsdl:output message="tns:GetClientDataWithGetMethodHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService2Soap" type="tns:WebService2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRemoteClientData">
+      <soap:operation soapAction="http://tempuri.org/GetRemoteClientData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientData">
+      <soap:operation soapAction="http://tempuri.org/GetClientData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDataWithGetMethod">
+      <soap:operation soapAction="http://tempuri.org/GetClientDataWithGetMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService2Soap12" type="tns:WebService2Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRemoteClientData">
+      <soap12:operation soapAction="http://tempuri.org/GetRemoteClientData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientData">
+      <soap12:operation soapAction="http://tempuri.org/GetClientData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDataWithGetMethod">
+      <soap12:operation soapAction="http://tempuri.org/GetClientDataWithGetMethod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService2HttpGet" type="tns:WebService2HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetRemoteClientData">
+      <http:operation location="/GetRemoteClientData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientData">
+      <http:operation location="/GetClientData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDataWithGetMethod">
+      <http:operation location="/GetClientDataWithGetMethod" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService2HttpPost" type="tns:WebService2HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetRemoteClientData">
+      <http:operation location="/GetRemoteClientData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientData">
+      <http:operation location="/GetClientData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDataWithGetMethod">
+      <http:operation location="/GetClientDataWithGetMethod" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService2">
+    <wsdl:port name="WebService2Soap" binding="tns:WebService2Soap">
+      <soap:address location="http://localhost:51897/WebService2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService2Soap12" binding="tns:WebService2Soap12">
+      <soap12:address location="http://localhost:51897/WebService2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService2HttpGet" binding="tns:WebService2HttpGet">
+      <http:address location="http://localhost:51897/WebService2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService2HttpPost" binding="tns:WebService2HttpPost">
+      <http:address location="http://localhost:51897/WebService2.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
